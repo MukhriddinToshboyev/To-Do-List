@@ -1,46 +1,66 @@
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
-function Timer() {
-  const [time, setTime] = useState(0); // Sekundlarni saqlash uchun state
-  const intervalRef = useRef(null); // intervalni saqlash uchun ref
+function Menu() {
+  const [currentDate, setCurrentDate] = useState("");
+  const [task, setTask] = useState("");
+
+  const handleInputChange = (e) => {
+    setTask(e.target.value);
+  };
+
+  const handleAddTask = () => {
+    if (task.trim()) {
+      console.log("New Task:", task); // Bu yerda yangi vazifani qo'shish yoki boshqa funksiyani chaqirishingiz mumkin
+      setTask(""); // Input maydonini tozalash
+    }
+  };
 
   useEffect(() => {
-    // Timer ishga tushirilmoqda
-    intervalRef.current = setInterval(() => {
-      setTime((prevTime) => prevTime + 1); // har bir sekundda vaqtni oshirish
-    }, 1000);
-
-    // Komponent unmount bo'lganda intervalni to'xtatish
-    return () => {
-      clearInterval(intervalRef.current);
-    };
+    // Sanani formatlaymiz va saqlaymiz
+    const today = new Date();
+    setCurrentDate(today.toLocaleDateString());
   }, []);
 
-  const stopTimer = () => {
-    clearInterval(intervalRef.current); // Intervalni to'xtatish
-  };
-
-  const resetTimer = () => {
-    setTime(0); // Vaqtni 0 ga o'rnatish
-    clearInterval(intervalRef.current); // Timer to'xtatiladi
-    // Timer qaytadan boshlanadi
-    intervalRef.current = setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
-    }, 1000);
-  };
-
   return (
-    <div>
-      <h1>Time: {time} seconds</h1>
-      <button onClick={stopTimer}>Stop</button>
-      <button onClick={resetTimer}>Reset</button>
+    <div className="menu-container">
+      <header className="menu-header">
+        <h2 className="menu-header__title">A To-Do-List!</h2>
+        <p className="menu-header__text">
+          "Your a wizzard Harry.. prepare to die" - Hagrid
+        </p>
+        <p className="menu-header__date">{currentDate}</p>
+      </header>
+      <nav className="menu-navigation">
+        <input
+          type="text"
+          value={task}
+          onChange={handleInputChange}
+          placeholder="What's your tasks today?"
+          style={{
+            flex: 1,
+            padding: "10px",
+            border: "1px solid #ccc",
+            borderRadius: "4px 0 0 4px",
+            outline: "none",
+          }}
+        />
+        <button
+          onClick={handleAddTask}
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#4285f4",
+            color: "#fff",
+            border: "none",
+            borderRadius: "0 4px 4px 0",
+            cursor: "pointer",
+          }}
+        >
+          + Add Item
+        </button>
+      </nav>
     </div>
   );
 }
 
-export default Timer;
-
-
-git remote add origin https://github.com/MukhriddinToshboyev/To-Do-List.git
-git branch -M main
-git push -u origin main
+export default Menu;
