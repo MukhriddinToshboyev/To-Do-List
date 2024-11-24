@@ -1,3 +1,29 @@
+.menu-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+/* Menu Header */
+
+.menu-header {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.menu-header__title {
+  font-size: 3rem;
+}
+
+.menu-header__text {
+  font-style: italic;
+  margin: 2rem;
+}
+
+.menu-header__date {
+  margin-bottom: 1rem;
+}
+
 .menu-navigation__input {
   flex: 1;
   padding: 10px;
