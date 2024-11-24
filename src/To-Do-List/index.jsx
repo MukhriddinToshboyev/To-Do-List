@@ -11,8 +11,23 @@ function Menu() {
 
   const [taskInput, setTaskInput] = useState("");
 
-  function handleAddTask(e) {
+  const [tasks, setTasks] = useState([]);
+
+  function handleInputChange(e) {
     setTaskInput(e.target.value);
+  }
+
+  function handleAddTask() {
+    if (taskInput.trim()) {
+      const newTask = {
+        id: Math.floor(Math.random() * 100),
+        text: taskInput,
+        completed: false,
+      };
+      setTasks([...tasks, newTask]);
+      setTaskInput("");
+      console.log(tasks);
+    }
   }
 
   useEffect(() => {
@@ -34,12 +49,14 @@ function Menu() {
       <nav className="menu-navigation">
         <input
           value={taskInput}
-          onChange={handleAddTask}
+          onChange={handleInputChange}
           type="text"
           placeholder="What's your tasks today?"
           className="menu-navigation__input"
         />
-        <button className="menu-navigation__button">+ Add Item</button>
+        <button onClick={handleAddTask} className="menu-navigation__button">
+          + Add Item
+        </button>
       </nav>
       <Completed />
       <Tasks />
