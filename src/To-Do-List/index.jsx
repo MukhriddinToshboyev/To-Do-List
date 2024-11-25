@@ -18,7 +18,6 @@ function Menu() {
 
   function handleInputChange(e) {
     setTaskInput(e.target.value);
-    localStorage.setItem("tasks", taskInput);
   }
 
   function handleAddTask() {
@@ -30,7 +29,6 @@ function Menu() {
       };
       setTasks([...tasks, newTask]);
       setTaskInput("");
-      console.log(tasks);
     }
   }
 
@@ -69,6 +67,17 @@ function Menu() {
       )
     );
   }
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (savedTasks) {
+      setTasks(savedTasks);
+    }
+  }, []);
 
   useEffect(() => {
     // Sanani formatlaymiz va saqlaymiz
