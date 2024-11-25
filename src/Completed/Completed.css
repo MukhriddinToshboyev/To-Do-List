@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  align-items: start;
 }
 
 .completed-title {
@@ -12,4 +13,51 @@
 }
 
 .completed-lists {
+  padding: 0;
+}
+
+.completed-list {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.completed-list__input {
+  list-style: none;
+  padding: 0.6rem;
+  display: flex;
+  background: #eceeef;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.completed-checkbox {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.completed-input {
+  padding: 0.7rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-decoration: line-through;
+}
+
+.completed-button__edit {
+  width: 5rem;
+  color: #ffff;
+  background: #5bc0de;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+}
+
+.completed-button__delete {
+  width: 6rem;
+  color: #ffff;
+  background: #d9534f;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
 }

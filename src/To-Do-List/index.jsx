@@ -18,6 +18,7 @@ function Menu() {
 
   function handleInputChange(e) {
     setTaskInput(e.target.value);
+    localStorage.setItem("tasks", taskInput);
   }
 
   function handleAddTask() {
@@ -112,7 +113,6 @@ function Menu() {
         handleDeleteTask={handleDeleteTask}
         handleCompleteTask={handleCompleteTask}
       />
-      <Taskbar />
     </div>
   );
 }

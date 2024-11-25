@@ -19,10 +19,10 @@ function Completed({
                   type="checkbox"
                   checked
                   onChange={() => handleCompleteTask(task.id)}
-                  className="completed-input"
+                  className="completed-checkbox"
                 />
               </div>
-              <input value={task.text} className="completed-list__text"></input>
+              <input value={task.text} className="completed-input"></input>
               <button
                 onClick={() => handleEditTask(task.id)}
                 className="completed-button__edit"
