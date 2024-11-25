@@ -30,11 +30,13 @@ function Menu() {
       setTasks([...tasks, newTask]);
       setTaskInput("");
     }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   // Taskni o'chirish
   function handleDeleteTask(id) {
     setTasks(tasks.filter((task) => task.id !== id));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   // Taskni tahrirlash
@@ -42,6 +44,7 @@ function Menu() {
     const taskToEdit = tasks.find((task) => task.id === id);
     setTaskInput(taskToEdit.text);
     setEditingTaskId(id);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   // taskga yangi vazifa yuklash
@@ -55,6 +58,7 @@ function Menu() {
       );
       setTaskInput("");
       setEditingTaskId(null);
+      localStorage.setItem("tasks", JSON.stringify(taskInput));
     }
   }
 
@@ -66,11 +70,8 @@ function Menu() {
         task.id == id ? { ...task, completed: !task.completed } : task
       )
     );
-  }
-
-  useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  }
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks"));
