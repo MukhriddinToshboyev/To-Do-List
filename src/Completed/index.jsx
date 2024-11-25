@@ -7,28 +7,34 @@ function Completed({
   handleDeleteTask,
 }) {
   return (
-    <div>
-      <h2>Completed</h2>
-      <ul>
+    <div className="completed-container">
+      <h2 className="completed-title">Completed</h2>
+      <ul className="completed-lists">
         {tasks
           .filter((task) => task.completed)
           .map((task) => (
-            <li key={task.id} style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="checkbox"
-                checked
-                onChange={() => handleCompleteTask(task.id)}
-              />
-              <input
-                value={task.text}
-                style={{
-                  flex: 1,
-                  margin: "0 10px",
-                  textDecoration: "line-through",
-                }}
-              ></input>
-              <button onClick={() => handleEditTask(task.id)}>Edit</button>
-              <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+            <li key={task.id} className="completed-list">
+              <div className="completed-list__input">
+                <input
+                  type="checkbox"
+                  checked
+                  onChange={() => handleCompleteTask(task.id)}
+                  className="completed-input"
+                />
+              </div>
+              <input value={task.text} className="completed-list__text"></input>
+              <button
+                onClick={() => handleEditTask(task.id)}
+                className="completed-button__edit"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDeleteTask(task.id)}
+                className="completed-button__delete"
+              >
+                Delete
+              </button>
             </li>
           ))}
       </ul>

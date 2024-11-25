@@ -7,18 +7,20 @@ function Tasks({
   handleCompleteTask,
 }) {
   return (
-    <div>
-      <h2>Tasks</h2>
-      <ul>
+    <div className="tasks-container">
+      <h2 className="tasks-title">Tasks</h2>
+      <ul className="tasks-lists">
         {tasks
           .filter((task) => !task.completed)
           .map((task) => (
-            <li key={task.id} style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="checkbox"
-                onChange={() => handleCompleteTask(task.id)}
-                className="tasks-input__checkbox"
-              />
+            <li key={task.id} className="tasks-list">
+              <div className="tasks-inputs">
+                <input
+                  type="checkbox"
+                  onChange={() => handleCompleteTask(task.id)}
+                  className="tasks-input__checkbox"
+                />
+              </div>
               <input type="text" value={task.text} className="tasks-input" />
 
               <button

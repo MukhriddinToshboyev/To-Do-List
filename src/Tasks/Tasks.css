@@ -1,1 +1,61 @@
-.tasks-input__checkbox
+.tasks-container {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.tasks-title {
+  font-size: 2.5rem;
+}
+
+.tasks-lists {
+  padding: 0;
+}
+
+.tasks-list {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.tasks-inputs {
+  list-style: none;
+  padding: 0.6rem;
+  display: flex;
+  background: #eceeef;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.tasks-input__checkbox {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.tasks-input {
+  padding: 0.7rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.tasks-button__edit {
+  width: 5rem;
+  color: #ffff;
+  background: #5bc0de;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+}
+
+.tasks-button__deleted {
+  width: 6rem;
+  color: #ffff;
+  background: #d9534f;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+}
