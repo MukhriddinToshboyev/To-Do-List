@@ -1,6 +1,11 @@
 import "./Tasks.css";
 
-function Tasks({ tasks, handleEditTask, handleDeleteTask }) {
+function Tasks({
+  tasks,
+  handleEditTask,
+  handleDeleteTask,
+  handleCompleteTask,
+}) {
   return (
     <div>
       <h2>Tasks</h2>
@@ -11,12 +16,23 @@ function Tasks({ tasks, handleEditTask, handleDeleteTask }) {
             <li key={task.id} style={{ display: "flex", alignItems: "center" }}>
               <input
                 type="checkbox"
-                // onChange={() => handleCompleteTask(task.id)}
+                onChange={() => handleCompleteTask(task.id)}
+                className="tasks-input__checkbox"
               />
-              <input type="text" value={task.text} />
+              <input type="text" value={task.text} className="tasks-input" />
 
-              <button onClick={() => handleEditTask(task.id)}>Edit</button>
-              <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+              <button
+                onClick={() => handleEditTask(task.id)}
+                className="tasks-button__edit"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDeleteTask(task.id)}
+                className="tasks-button__deleted"
+              >
+                Delete
+              </button>
             </li>
           ))}
       </ul>

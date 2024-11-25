@@ -47,6 +47,28 @@ function Menu() {
 
   // taskga yangi vazifa yuklash
 
+  function handleUpdateTask() {
+    if (taskInput.trim()) {
+      setTasks(
+        tasks.map((task) =>
+          task.id === editingTaskId ? { ...task, text: taskInput } : task
+        )
+      );
+      setTaskInput("");
+      setEditingTaskId(null);
+    }
+  }
+
+  // Completedga malumot yuklash
+
+  function handleCompleteTask(id) {
+    setTasks(
+      tasks.map((task) =>
+        task.id == id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
+
   useEffect(() => {
     // Sanani formatlaymiz va saqlaymiz
     const today = new Date();
@@ -71,16 +93,25 @@ function Menu() {
           placeholder="What's your tasks today?"
           className="menu-navigation__input"
         />
-        <button onClick={handleAddTask} className="menu-navigation__button">
-          + Add Item
+        <button
+          onClick={editingTaskId ? handleUpdateTask : handleAddTask}
+          className="menu-navigation__button"
+        >
+          {editingTaskId ? "Save " : " + Add item"}
         </button>
       </nav>
       <Tasks
         tasks={tasks}
         handleEditTask={handleEditTask}
         handleDeleteTask={handleDeleteTask}
+        handleCompleteTask={handleCompleteTask}
       />
-      <Completed />
+      <Completed
+        tasks={tasks}
+        handleEditTask={handleEditTask}
+        handleDeleteTask={handleDeleteTask}
+        handleCompleteTask={handleCompleteTask}
+      />
       <Taskbar />
     </div>
   );
