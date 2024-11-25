@@ -58,8 +58,8 @@ function Menu() {
       );
       setTaskInput("");
       setEditingTaskId(null);
-      localStorage.setItem("tasks", JSON.stringify(taskInput));
     }
+    localStorage.setItem("tasks", JSON.stringify(taskInput));
   }
 
   // Completedga malumot yuklash
