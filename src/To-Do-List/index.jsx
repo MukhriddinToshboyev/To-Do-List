@@ -81,6 +81,10 @@ function Menu() {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  useEffect(() => {
     // Sanani formatlaymiz va saqlaymiz
     const today = new Date();
     setCurrentDate(today.toLocaleDateString());
