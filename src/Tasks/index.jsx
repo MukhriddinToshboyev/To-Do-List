@@ -6,12 +6,14 @@ function Tasks({
   handleDeleteTask,
   handleCompleteTask,
 }) {
+  console.log(tasks);
+
   return (
     <div className="tasks-container">
       <h2 className="tasks-title">Tasks</h2>
       <ul className="tasks-lists">
         {tasks
-          .filter((task) => !task.completed)
+          ?.filter((task) => !task.completed)
           .map((task) => (
             <li key={task.id} className="tasks-list">
               <div className="tasks-inputs">

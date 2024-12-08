@@ -5,7 +5,6 @@ import Completed from "../Completed";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import Taskbar from "../Taskbar";
 
 function Menu() {
   const [currentDate, setCurrentDate] = useState("");
@@ -27,50 +26,53 @@ function Menu() {
         text: taskInput,
         completed: false,
       };
+      localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
       setTasks([...tasks, newTask]);
       setTaskInput("");
     }
-    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   // Taskni o'chirish
   function handleDeleteTask(id) {
-    setTasks(tasks.filter((task) => task.id !== id));
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    const newTasks = tasks.filter((task) => task.id !== id);
+
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
   }
 
   // Taskni tahrirlash
   function handleEditTask(id) {
     const taskToEdit = tasks.find((task) => task.id === id);
+
+    localStorage.setItem("tasks", JSON.stringify(taskToEdit.text));
+
     setTaskInput(taskToEdit.text);
     setEditingTaskId(id);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   // taskga yangi vazifa yuklash
 
   function handleUpdateTask() {
     if (taskInput.trim()) {
-      setTasks(
-        tasks.map((task) =>
-          task.id === editingTaskId ? { ...task, text: taskInput } : task
-        )
+      const newTasks = tasks.map((task) =>
+        task.id === editingTaskId ? { ...task, text: taskInput } : task
       );
+      localStorage.setItem("tasks", JSON.stringify(newTasks));
+      setTasks(newTasks);
       setTaskInput("");
       setEditingTaskId(null);
     }
-    localStorage.setItem("tasks", JSON.stringify(taskInput));
   }
 
   // Completedga malumot yuklash
 
   function handleCompleteTask(id) {
-    setTasks(
-      tasks.map((task) =>
-        task.id == id ? { ...task, completed: !task.completed } : task
-      )
+    const newTasks = tasks.map((task) =>
+      task.id == id ? { ...task, completed: !task.completed } : task
     );
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
   }
 
   useEffect(() => {
@@ -81,14 +83,12 @@ function Menu() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  useEffect(() => {
     // Sanani formatlaymiz va saqlaymiz
     const today = new Date();
     setCurrentDate(today.toLocaleDateString());
   }, []);
+
+  console.log("tasks", tasks);
 
   return (
     <div className="menu-container">
