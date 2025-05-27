@@ -93,11 +93,8 @@ function Menu() {
   return (
     <div className="menu-container">
       <header className="menu-header">
-        <h1 className="menu-header__title">A To-Do-List!</h1>
-        <p className="menu-header__text">
-          "It is possible to commit no mistakes and still lose. That is not{" "}
-          <br /> a weakness; that is life" - Jean Luc Picard
-        </p>
+        <h1 className="menu-header__title"> To-Do-List!</h1>
+
         <p className="menu-header__date">{currentDate}</p>
       </header>
       <nav className="menu-navigation">
