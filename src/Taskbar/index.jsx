@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./taskbar.css";
 
 function Taskbar() {
   const [tasks, setTasks] = useState([]);
