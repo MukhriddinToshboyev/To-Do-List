@@ -32,7 +32,7 @@ function Menu() {
     }
   }
 
-  // Taskni o'chirish
+  // delete task
   function handleDeleteTask(id) {
     const newTasks = tasks.filter((task) => task.id !== id);
 
@@ -40,7 +40,7 @@ function Menu() {
     setTasks(newTasks);
   }
 
-  // Taskni tahrirlash
+  // edit task
   function handleEditTask(id) {
     const taskToEdit = tasks.find((task) => task.id === id);
 
@@ -55,7 +55,7 @@ function Menu() {
   function handleUpdateTask() {
     if (taskInput.trim()) {
       const newTasks = tasks.map((task) =>
-        task.id === editingTaskId ? { ...task, text: taskInput } : task
+        task.id === editingTaskId ? { ...task, text: taskInput } : task,
       );
       localStorage.setItem("tasks", JSON.stringify(newTasks));
       setTasks(newTasks);
@@ -68,7 +68,7 @@ function Menu() {
 
   function handleCompleteTask(id) {
     const newTasks = tasks.map((task) =>
-      task.id == id ? { ...task, completed: !task.completed } : task
+      task.id == id ? { ...task, completed: !task.completed } : task,
     );
 
     localStorage.setItem("tasks", JSON.stringify(newTasks));
