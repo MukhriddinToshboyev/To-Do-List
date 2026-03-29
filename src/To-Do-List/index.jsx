@@ -1,4 +1,4 @@
-import "./Menu.css";
+import "./style.css";
 
 import Tasks from "../Tasks";
 import Completed from "../Completed";
@@ -18,6 +18,8 @@ function Menu() {
   function handleInputChange(e) {
     setTaskInput(e.target.value);
   }
+
+  //cloude
 
   function handleAddTask() {
     if (taskInput.trim()) {
